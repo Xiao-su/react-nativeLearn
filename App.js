@@ -8,8 +8,10 @@
 
 import React, { useRef, useEffect } from 'react';
 import {
-  Alert, Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View, Animated
+  Alert, Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View, Animated, Button
 } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import {
   Colors,
@@ -22,15 +24,42 @@ import {
 import RootStore from './mobx';
 import { Provider } from 'mobx-react';
 
-import Btn from './components/Btn';
+const HomeScreen = ({navigation}) =>{
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('Details')}
+      />
+  </View>
+  )
+}
+
+const DetailsScreen = () => {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+const AppContainer = createAppContainer(AppNavigator);
 
 const App = () => {
   return (
-    <View>
-      <Provider RootStore={RootStore}>
-        <Btn />
-      </Provider>
-    </View>
+    <Provider RootStore={RootStore}>
+      <AppContainer />
+    </Provider>
   );
 };
 
