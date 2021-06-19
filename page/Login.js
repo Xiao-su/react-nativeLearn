@@ -3,7 +3,9 @@ import { Text, View, Image, StatusBar, StyleSheet } from 'react-native'
 import {pxToDp} from '../untils/stylesKits';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
-import phoneValidUntil from '../untils/validator'
+import phoneValidUntil from '../untils/validator';
+import {ACCOUNT_LOGIN} from '../untils/mockApi';
+import request from '../untils/request'
 
 const styles = StyleSheet.create({
   topImg:{
@@ -35,13 +37,18 @@ class Login extends Component {
     })
   }
 
-  phoneSubmitHandle = () => {
+  phoneSubmitHandle = async() => {
     const { phoneNumber } = this.state;
     const _phoneValid = phoneValidUntil.validatePhone(phoneNumber);
-    
     this.setState({
       phoneValid: _phoneValid
     });
+    if(_phoneValid){
+      const res = await request.post(ACCOUNT_LOGIN,{
+        phone: phoneNumber
+      });
+      console.log('res:',res)
+    }
   }
 
   render() {
