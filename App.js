@@ -7,7 +7,6 @@
  */
 
 import React, { useRef, useEffect } from 'react';
-import type {Node} from 'react';
 import {
   Alert, Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View, Animated
 } from 'react-native';
@@ -20,29 +19,17 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const FadeInView = (props) =>{
+import RootStore from './mobx';
+import { Provider } from 'mobx-react';
 
-  const fadeAnim = useRef(new Animated.Value(0)).current
-  useEffect(()=>{
-    Animated.timing(fadeAnim,{toValue:1, duration: 10000}).start();
-  }, [fadeAnim])
+import Btn from './components/Btn';
 
+const App = () => {
   return (
-    <Animated.View style={{...props.style, opacity: fadeAnim}}>
-      {props.children}
-    </Animated.View>
-  )
-}
-
-
-const App: () => Node = () => {
-
-  console.log('调试')
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      {/* <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}> */}
-        <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
-      {/* </FadeInView> */}
+    <View>
+      <Provider RootStore={RootStore}>
+        <Btn />
+      </Provider>
     </View>
   );
 };
