@@ -23,42 +23,12 @@ import {
 
 import RootStore from './mobx';
 import { Provider } from 'mobx-react';
-
-const HomeScreen = ({navigation}) =>{
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-  </View>
-  )
-}
-
-const DetailsScreen = () => {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
-
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Details: DetailsScreen,
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
-const AppContainer = createAppContainer(AppNavigator);
+import Router from './router';
 
 const App = () => {
   return (
     <Provider RootStore={RootStore}>
-      <AppContainer />
+      <Router />
     </Provider>
   );
 };

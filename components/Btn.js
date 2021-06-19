@@ -8,11 +8,10 @@ class Index extends Component{
 
   handleName = () =>{
     const { changeName } = this.props.RootStore;
-    changeName('改变了')
+    changeName(`time:${Date.now()}`)
   }
 
   render(){
-    console.log('this', this)
     const { name } = this.props.RootStore;
     return (
       <View>
