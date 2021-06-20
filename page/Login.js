@@ -6,6 +6,7 @@ import { Input } from 'react-native-elements';
 import phoneValidUntil from '../untils/validator';
 import {ACCOUNT_LOGIN} from '../untils/mockApi';
 import request from '../untils/request';
+import THButton from '../components/THButton';
 
 const styles = StyleSheet.create({
   topImg:{
@@ -51,6 +52,10 @@ class Login extends Component {
     }
   }
 
+  getValidHandle = () =>{
+    console.log('getValidHandle:')
+  }
+
   render() {
     const { phoneNumber, phoneValid } = this.state;
     return (
@@ -73,7 +78,11 @@ class Login extends Component {
             onSubmitEditing={this.phoneSubmitHandle}
             leftIcon={{ type: 'font-awesome', name: 'phone', color: '#ccc', size: pxToDp(20) }}
           />
+          <View style={{width: '85%',height:pxToDp(40), alignSelf:'center'}}>
+            <THButton onPress={this.getValidHandle} style={{borderRadius: pxToDp(40)}}>获取验证码</THButton>
+          </View>
         </View>
+
       </View>
     )
   }
