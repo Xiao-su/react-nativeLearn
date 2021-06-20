@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import phoneValidUntil from '../untils/validator';
 import {ACCOUNT_LOGIN} from '../untils/mockApi';
-import request from '../untils/request'
+import request from '../untils/request';
 
 const styles = StyleSheet.create({
   topImg:{

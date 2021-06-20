@@ -13,6 +13,7 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
+    "axios": "^0.21.1",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
     "react": "17.0.1",
@@ -24,7 +25,8 @@
     "react-native-screens": "^3.4.0",
     "react-native-vector-icons": "^8.1.0",
     "react-navigation": "^4.4.4",
-    "react-navigation-stack": "^2.10.4"
+    "react-navigation-stack": "^2.10.4",
+    "teaset": "^0.7.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
